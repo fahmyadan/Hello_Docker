@@ -20,7 +20,7 @@ async def greet_user(request: dict):
     first_name, age = request['first'], request['age']
          
     try:
-        greeting = f'Hello Mr {first_name}, you are {age} years old \n IT WORKS'
+        greeting = f'Hello Mr {first_name}, you are {age} years old!'
         return greeting
     except Exception as e:
         logger.exception(e)

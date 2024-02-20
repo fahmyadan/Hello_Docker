@@ -1,0 +1,26 @@
+version: '2.2'
+
+services:
+  fastapi-app:
+    build:
+      context: ./API/
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - talos-network
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    networks:
+      - talos-network
+    depends_on:
+      - fastapi-app
+
+networks:
+  talos-network:
+    driver: bridge
